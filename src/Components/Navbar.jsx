@@ -16,15 +16,20 @@ import {
     Stack,
     useColorMode,
     Center,
+    Heading,
 } from '@chakra-ui/react'
 import { MoonIcon, SunIcon } from '@chakra-ui/icons'
 import React, { useState, useEffect } from 'react';
 
 
 const Navbar = () => {
-    const { colorMode, toggleColorMode } = useColorMode()
+    const { colorMode, toggleColorMode } = useColorMode();
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const [ltpData, setLtpData] = useState({ Nifty: 0, BankNifty: 0, FinNifty: 0 });
+    const [ltpData, setLtpData] = useState({
+        Nifty: { value: 0, color: 'black' },
+        Banknifty: { value: 0, color: 'black' },
+        Finnifty: { value: 0, color: 'black' },
+    });
 
     useEffect(() => {
         // WebSocket connection
@@ -34,7 +39,7 @@ const Navbar = () => {
         socket.addEventListener('message', (event) => {
             try {
                 const data = JSON.parse(event.data);
-                setLtpData(data);
+                updateLtpData(data);
             } catch (error) {
                 console.error('Error parsing WebSocket message:', error);
             }
@@ -45,6 +50,27 @@ const Navbar = () => {
             socket.close();
         };
     }, []);
+
+    const updateLtpData = (newData) => {
+        setLtpData((prevData) => ({
+            Nifty: {
+                value: newData.Nifty,
+                color: getColor(newData.Nifty, prevData.Nifty.value),
+            },
+            Banknifty: {
+                value: newData.Banknifty,
+                color: getColor(newData.Banknifty, prevData.Banknifty.value),
+            },
+            Finnifty: {
+                value: newData.Finnifty,
+                color: getColor(newData.Finnifty, prevData.Finnifty.value),
+            },
+        }));
+    };
+
+    const getColor = (latestValue, prevValue) => {
+        return latestValue > prevValue ? 'green' : latestValue < prevValue ? 'red' : 'black';
+    };
 
     useEffect(() => {
         const intervalId = setInterval(() => {
@@ -61,11 +87,24 @@ const Navbar = () => {
         <>
             <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
                 <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
-                    <Box>Algowiz</Box>
+                    <Heading fontSize={"21px"}>Algowiz</Heading>
 
-                    <Text>Nifty : {ltpData.Nifty}</Text>
-                    <Text>BankNifty : {ltpData.Banknifty}</Text>
-                    <Text>FinNifty : {ltpData.Finnifty}</Text>
+                    <Flex>
+                        <Text fontWeight={'semibold'} > Nifty :  </Text>
+                        <Text ml={"5px"} fontWeight={'semibold'} color={ltpData.Nifty.color}>{ltpData.Nifty.value}</Text>
+                    </Flex>
+
+
+                    <Flex>
+                        <Text fontWeight={'semibold'} > BankNifty :  </Text>
+                        <Text ml={"5px"} fontWeight={'semibold'} color={ltpData.Banknifty.color}> {ltpData.Banknifty.value}</Text>
+                    </Flex>
+
+
+                    <Flex>
+                        <Text fontWeight={'semibold'} > FinNifty :  </Text>
+                        <Text ml={"5px"} fontWeight={'semibold'} color={ltpData.Finnifty.color}> {ltpData.Finnifty.value}</Text>
+                    </Flex>
 
                     <Flex alignItems={'center'}>
                         <Stack direction={'row'} spacing={7}>
