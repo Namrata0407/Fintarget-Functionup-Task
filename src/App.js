@@ -5,13 +5,13 @@ import Navbar from './Components/Navbar';
 import GuideModal from './Components/GuideModal';
 
 function App() {
-  const [count,setCount] = useState(0);
+  const [count, setCount] = useState(0);
 
   return (
     <div className="App">
-      <Navbar/>
+      <Navbar />
       <CandlestickChart />
-      <GuideModal/>
+      <GuideModal />
     </div>
   );
 }

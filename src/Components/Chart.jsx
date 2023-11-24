@@ -5,7 +5,7 @@ import ReactApexChart from 'react-apexcharts';
 
 const seriesdata = [
     {
-        data: JSON.parse(localStorage?.getItem("localCandle")) ||  []
+        data: JSON.parse(localStorage?.getItem("localCandle")) || []
     },
 ];
 
@@ -16,16 +16,15 @@ const CandlestickChart = () => {
 
     useEffect(() => {
         let timeid = setInterval(() => {
-            if (series[0].data.length !== JSON.parse(localStorage.getItem("localCandle")) &&  JSON.parse(localStorage?.getItem("localCandle")) ) {
-                console.log("true", series[0].data?.length, JSON.parse(localStorage.getItem("localCandle"))?.length)
+            if (series[0].data.length !== JSON.parse(localStorage.getItem("localCandle")) && JSON.parse(localStorage?.getItem("localCandle"))) {
                 setSeries([
-                     {
-                         data:  JSON.parse(localStorage.getItem("localCandle")) ||  []
-                     },
-                 ])
+                    {
+                        data: JSON.parse(localStorage.getItem("localCandle")) || []
+                    },
+                ])
                 setCount(count + 1);
             } else {
-                console.log("false")
+                // console.log("false")
             }
         }, 1000);
 
@@ -42,7 +41,6 @@ const CandlestickChart = () => {
             text: 'Candlestick Chart',
         },
     };
-    console.log("this,is",series);
 
     return (
         <Flex justifyContent={"center"} w={"100%"} mt={"50px"}  >

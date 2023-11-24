@@ -30,10 +30,9 @@ const Navbar = () => {
         Banknifty: { value: 0, color: 'black' },
         Finnifty: { value: 0, color: 'black' },
     });
-    const [currentState,setCurrentState] = useState({"open":0,"heigh":0,"low":0,"close":0});
+    const [currentState, setCurrentState] = useState({ "open": 0, "heigh": 0, "low": 0, "close": 0 });
 
     useEffect(() => {
-        // WebSocket connection
         let count = 0;
         let open;
         let high;
@@ -46,50 +45,43 @@ const Navbar = () => {
             try {
                 const data = JSON.parse(event.data);
 
-                // [
-                //     {
-                //       x: new Date('2023-01-01').getTime(),
-                //       y: [659, 720, 640, 701],
-                //     },
-                //   ];
-
-                if(count === 0){
+                if (count === 0) {
                     open = data.Nifty;
                     high = data.Nifty;
                     low = data.Nifty;
-                    console.log(open,high,low,close,count);
+                    console.log(open, high, low, close, count);
                     count++;
-                }else if(count == 59){
+                } else if (count == 59) {
                     close = data.Nifty;
-                    console.log(open,high,low,close,count);
+                    console.log(open, high, low, close, count);
 
                     let localData = JSON.parse(localStorage.getItem("localCandle")) || []
 
                     localData.push({
                         x: new Date().getTime(),
-                        y: [open,high,low,close]
+                        y: [open, high, low, close]
                     })
 
-                    localStorage.setItem("localCandle",JSON.stringify(localData));
+                    localStorage.setItem("localCandle", JSON.stringify(localData));
 
                     open = null;
                     high = null;
                     low = null;
                     close = null;
                     count = 0;
-                    
-                }else{
-                    if(data.Nifty > high){
+
+                } else {
+                    if (data.Nifty > high) {
                         high = data.Nifty;
-                    }else if(data.Nifty < low){
+                    } else if (data.Nifty < low) {
                         low = data.Nifty;
                     }
-                    console.log(open,high,low,close,count);
+                    console.log(open, high, low, close, count);
                     count++;
                 }
-                
-                updateLtpData(data,count);
-                
+
+                updateLtpData(data, count);
+
             } catch (error) {
                 console.error('Error parsing WebSocket message:', error);
             }
@@ -101,10 +93,9 @@ const Navbar = () => {
         };
     }, []);
 
-    const updateLtpData = (newData,count) => {
-       
-       
-       // console.log(count,newData);
+    const updateLtpData = (newData, count) => {
+
+
         setLtpData((prevData) => ({
             Nifty: {
                 value: newData.Nifty,
@@ -125,16 +116,6 @@ const Navbar = () => {
         return latestValue > prevValue ? 'green' : latestValue < prevValue ? 'red' : 'black';
     };
 
-    useEffect(() => {
-      //  const intervalId = setInterval(() => {
-        //    console.log('Latest LTP Data:', ltpData);
-     //   }, 1000);
-
-        // Clear the timer on component unmount
-        // return () => {
-        //     clearInterval(intervalId);
-        // };
-    }, [ltpData?.Nifty?.value]);
 
     return (
         <>

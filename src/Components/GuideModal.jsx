@@ -13,8 +13,6 @@ import {
 import { useEffect, useState } from 'react';
 
 
-
-
 const GuideModal = () => {
     const OverlayOne = () => (
         <ModalOverlay
@@ -49,8 +47,8 @@ const GuideModal = () => {
                     <ModalCloseButton />
                     <ModalBody>
                         <Text fontWeight={"semibold"}>Since each candle will be printed after one minute, So please wait a
-                             few minutes to see the new candles appear on the chart, and don't
-                             refresh the page.</Text>
+                            few minutes to see the new candles appear on the chart, and don't
+                            refresh the page.</Text>
                     </ModalBody>
                     <ModalFooter>
                         <Button bgColor={"#00b6ff"} color={"white"} onClick={onClose}>OK</Button>
