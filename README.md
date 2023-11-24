@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+# [Fintarget-Functionup-Task](https://fintarget-functionup-task-juoycs4te-namrata0407.vercel.app/)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+Fintarget-Functionup-Task is a web application built using React.js that allows users to view the current status of different indexes such as Nifty, BankNifty, and FinNifty. The information is conveniently displayed in the navbar for quick reference. The application also features a candlestick chart for visualizing the data of the Nifty index. Users can switch between themes, and the candlestick chart provides details like opening, closing, high, and low values for every minute when hovering over the candles.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- View current status of Nifty, BankNifty, and FinNifty in the navbar.
+- Interactive candlestick chart for Nifty index.
+- Theme switch functionality for a personalized experience.
+- Hover over the candlestick chart to see opening, closing, high, and low values for every minute.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Preview
+![Screenshot 2023-11-24 at 4 43 14 PM](https://github.com/Namrata0407/Fintarget-Functionup-Task/assets/112812835/d50869be-935d-434a-8b90-03be774b8ee8)
+![Screenshot 2023-11-24 at 4 45 47 PM](https://github.com/Namrata0407/Fintarget-Functionup-Task/assets/112812835/b946ad57-4553-48eb-a76a-9de0e08080d3)
+![rxxqg6uy](https://github.com/Namrata0407/Fintarget-Functionup-Task/assets/112812835/86492ff9-4304-4447-97a4-bc50b14089f8)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Technical Information
 
-### `npm test`
+- Web socket integration for real-time updates on index status.
+- Built with React.js for the frontend.
+- Styling done using Chakra UI.
+- Local storage utilized for data persistence.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Getting Started
+```bash
+1. Clone the repository:
+   
+   git clone https://github.com/Namrata0407/Fintarget-Functionup-Task
 
-### `npm run build`
+2. Install dependencies:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   cd Fintarget-Functionup-Task
+   npm install
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. Run the application:
+   npm start
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
